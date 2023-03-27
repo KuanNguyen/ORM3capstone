@@ -7,10 +7,8 @@ const { successCode, failCode, errorCode } = require('../config/response');
 
 const getUser = async (req, res) => {
     try {
-        // SELECT * FROM user;
-        // bất đồng bộ
-        let data = await model.nguoi_dung.findAll(); // => list object => [{}]
-
+     
+        let data = await model.nguoi_dung.findAll(); 
         res.status(200).send(data);
 
     } catch (err) {

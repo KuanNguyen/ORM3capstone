@@ -25,66 +25,19 @@ app.listen(8080);
 const rootRoute = require('./src/routes/rootRoute');
 app.use("/api",rootRoute)
 
+// const swaggerUi = require('swagger-ui-express');
+// const swaggerJsDoc = require('swagger-jsdoc');
 
-// khởi tạo phương thước trả về cho FE
-// Method: GET
-// Rest param => ES6 ...
-// path => đường dẫn phụ
-// app.get("/demo/:id", (req, res) => {
-//     //nhận dự liệu từ FE
-//     // lấy dữ liệu params
-//     // let id = req.params.id;
+// const options = {
+//    definition: {
+//       info: {
+//          title: "photo-app",
+//          version: "1.0.0"
+//       }
+//    },
+//    apis: ["swagger/index.js"]
+// }
 
-//     // lấy dữ liệu query 
-//     // ?id=123&name=node27
-//     // let id = req.query.id;
+// const specs = swaggerJsDoc(options);
 
-//     // lấy dữ liệu bằng body
-//     let { id, hoTen, tuoi } = req.body;
-
-//     // trả dữ liệu về cho FE
-//     // có thể trả: chuỗi, object, list object, bool, 
-//     // ko cho phép trả number
-//     res.status(333).send({ id, hoTen, tuoi });
-// })
-// // app.post()
-// // app.put()
-// // app.delete()
-
-// //yarn add mysql2
-
-
-// const mysql = require('mysql2');
-
-// const conn = mysql.createConnection({
-//     host: "localhost",
-//     user: "root",
-//     password: "1234",
-//     port: 3306,
-//     database: "db_node27"
-// })
-
-// // phương thức get có url /user
-// app.get("/user", (req, res) => {
-//     let { key } = req.params;
-//     // const sql = `SELECT * FROM users WHERE ho_ten LIKE '%${key}%'`;
-//     const sql = `SELECT * FROM users`;
-
-//     conn.query(sql, (err, result) => {
-//         res.send(result);
-//     });
-//     //ORM sequelize
-
-// })
-
-// app.get("/api/v1/user/getUser",(req,res)=>{
-
-// })
-
-// app.post("/api/user/createUser",(req,res)=>{
-    
-// })
-
-// app.put("/api/user/updateUser",(req,res)=>{
-    
-// })
+// app.use("/swagger", swaggerUi.serve, swaggerUi.setup(specs));
