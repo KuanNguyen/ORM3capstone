@@ -1,0 +1,272 @@
+{
+	"info": {
+		"_postman_id": "aecf1bf7-9ada-4040-ba20-f824c0766c73",
+		"name": "baitapORM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24487689"
+	},
+	"item": [
+		{
+			"name": "getAnhAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{domain}}/trangChu/getAnh"
+			},
+			"response": []
+		},
+		{
+			"name": "getInfoAnh",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{domain}}/trangChiTiet/getInfoAnh"
+			},
+			"response": []
+		},
+		{
+			"name": "GetInfoBinhLuan",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": ""
+			},
+			"response": []
+		},
+		{
+			"name": "trangDangKI",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"q112s45s3@gmail.com\",\r\n    \"mat_khau\":\"12345\",\r\n    \"ho_ten\":\"nguyen minh quan2\",\r\n    \"tuoi\": 15,\r\n    \"anh_dai_dien\":\"aaa2sdsda\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{domain}}/dangki/signUp"
+			},
+			"response": []
+		},
+		{
+			"name": "trangDangNhap",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"quan45@gmail.com\",\r\n    \"mat_khau\":\"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{domain}}/dangnhap/login"
+			},
+			"response": []
+		},
+		{
+			"name": "getAnhTheoTen",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getInfoAnhLuu",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": ""
+			},
+			"response": []
+		},
+		{
+			"name": "them anh",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fileUpload",
+							"type": "file",
+							"src": "/D:/NODE27/baitapORM3/public/img/download.jpg"
+						}
+					]
+				},
+				"url": "{{domain}}/trangChiTiet/postHinhAnh"
+			},
+			"response": []
+		},
+		{
+			"name": "xoaAnhTheoIdAnh",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{domain}}/trangChiTiet/xoaAnh/3"
+			},
+			"response": []
+		},
+		{
+			"name": "getUser",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": "{{domain}}/nguoidung/getUser"
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": {
+						"addTokenTo": "header",
+						"algorithm": "HS256",
+						"isSecretBase64Encoded": false,
+						"payload": "{}",
+						"headerPrefix": "Bearer",
+						"queryParamKey": "token",
+						"header": "{}"
+					}
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"email\": \"nguyenvanh@gmail.com\",\r\n        \"mat_khau\": \"1234\",\r\n        \"ho_ten\": \"nguyen van h\",\r\n        \"tuoi\": 32,\r\n        \"anh_dai_dien\": null\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{domain}}/nguoidung/updateUser/5"
+			},
+			"response": []
+		},
+		{
+			"name": "getTaoanh",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/nguoidung/getUserIdPhoto/2?token={{token}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"nguoidung",
+						"getUserIdPhoto",
+						"2"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getLuuAnh",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": "{{domain}}/nguoidung/getPhotoIdUser/2"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": ""
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "http://localhost:8080/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50Ijp7Im5ndW9pX2R1bmdfaWQiOjgsImVtYWlsIjoicXVhbjQ1QGdtYWlsLmNvbSIsIm1hdF9raGF1IjoiIiwiaG9fdGVuIjoibmd1eWVuIG1pbmggcXVhbjIiLCJ0dW9pIjoxNSwiYW5oX2RhaV9kaWVuIjpudWxsfSwiaWF0IjoxNjc5OTI3MjY0LCJleHAiOjE5OTU1MDMyNjR9.kv5tA4pK9-FDfTmV_Fs9UAq5NgZq1cuzBX4r-jbKFxo\n",
+			"type": "string"
+		}
+	]
+}

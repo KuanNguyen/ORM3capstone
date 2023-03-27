@@ -5,14 +5,14 @@ const { createToken } = require('../utils/jwtoken');
 const { successCode, failCode, errorCode } = require('../config/response');
 
 const getAnh = async (req, res) => {
-    try {
+    // try {
         let data = await model.hinh_anh.findAll(); // => list object => [{}]
 
         res.status(200).send(data);
 
-    } catch (err) {
-        res.status(500).send("Lỗi Back end");
-    }
+    // } catch (err) {
+    //     res.status(500).send("Lỗi Back end");
+    // }
 }
 
 const getAnhTheoTen = async (req, res) => {
