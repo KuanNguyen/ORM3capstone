@@ -3,7 +3,7 @@ const initModels = require('../models/init-models');
 const model = initModels(sequelize);
 const { successCode, failCode, errorCode } = require('../config/response');
 
-
+//get thông tin ảnh và người tạo ảnh bằng Id ảnh 
 const getInfoAnhId = async (req, res) => {
     try {
         let { hinh_id } = req.params;
@@ -29,7 +29,7 @@ const getInfoAnhId = async (req, res) => {
     }
 }
 
-
+//get thông tin bình luận theo id ảnh 
 const getInfoBinhLuan = async (req, res) => {
     try {
         let { id } = req.params;
@@ -58,6 +58,7 @@ const getInfoBinhLuan = async (req, res) => {
     }
 }
 
+//get thông tin đã lưu ảnh này chưa 
 const getInfoAnhLuu = async (req, res) => {
     try {
         let { hinh_id } = req.params;
@@ -84,6 +85,8 @@ const getInfoAnhLuu = async (req, res) => {
       }
 }
 
+
+//post thêm 1 ảnh 
 const themAnh = async (req,res) => {
     const fs = require("fs");
 
@@ -106,6 +109,7 @@ const themAnh = async (req,res) => {
   );
 }
 
+//xóa ảnh 
 const xoaAnh = async (req, res) => {
     try {
       let { hinh_id } = req.params;

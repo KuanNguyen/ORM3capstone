@@ -4,10 +4,8 @@ const model = initModels(sequelize);
 const { createToken } = require('../utils/jwtoken');
 const { successCode, failCode, errorCode } = require('../config/response');
 
-const bcrypt = require('bcrypt');
+//trang đăng kí 
 const signUp = async (req, res) => {
-
-
     try {
         const { email, mat_khau, ho_ten, tuoi } = req.body
         const nguoiDung = await model.nguoi_dung.findOne({

@@ -5,7 +5,7 @@ const { createToken } = require('../utils/jwtoken');
 const { successCode, failCode, errorCode } = require('../config/response');
 
 
-const bcrypt = require('bcrypt');
+//trang đăng nhập
 const login = async (req, res) => {
     try {
         const { email, mat_khau } = req.body
@@ -25,7 +25,8 @@ const login = async (req, res) => {
         }
   
      } catch (err) {
-        errCode(res, 'Lỗi Backend')
+      console.log(err)
+        errorCode(res, 'Lỗi Backend')
      }
 }
 
