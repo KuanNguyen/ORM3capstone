@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "getAnhAll",
+			"name": "GET Toàn bộ ảnh",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -25,10 +25,44 @@
 			"response": []
 		},
 		{
-			"name": "getInfoAnh",
+			"name": "GET thông tin ảnh và người tạo ảnh bằng Id ảnh",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50Ijp7Im5ndW9pX2R1bmdfaWQiOjgsImVtYWlsIjoicXVhbjQ1QGdtYWlsLmNvbSIsIm1hdF9raGF1IjoiIiwiaG9fdGVuIjoibmd1eWVuIG1pbmggcXVhbjIiLCJ0dW9pIjoxNSwiYW5oX2RhaV9kaWVuIjpudWxsfSwiaWF0IjoxNjc5OTI1OTk1LCJleHAiOjE5OTU1MDE5OTV9.kijgkscIYNNA1BMmWkPLgsJiwnA3MpB0g4zN-T-6kOM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/trangChiTiet/getInfoAnh/2",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"trangChiTiet",
+						"getInfoAnh",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET thông tin bình luận theo id ảnh",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -41,39 +75,29 @@
 					]
 				},
 				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\":\"6\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
 					}
-				},
+				],
 				"url": {
-					"raw": "{{domain}}/trangChiTiet/getInfoAnh",
+					"raw": "{{domain}}/trangChiTiet/getInfoBinhLuan/1",
 					"host": [
 						"{{domain}}"
 					],
 					"path": [
 						"trangChiTiet",
-						"getInfoAnh"
+						"getInfoBinhLuan",
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "GetInfoBinhLuan",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "trangDangKI",
+			"name": "POST trang đăng kí",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -100,7 +124,7 @@
 			"response": []
 		},
 		{
-			"name": "trangDangNhap",
+			"name": "POST trang đăng nhập",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -127,23 +151,62 @@
 			"response": []
 		},
 		{
-			"name": "getAnhTheoTen",
+			"name": "GET ảnh theo tên",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tenHinh\":\"hinh a\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/trangChu/getAnhTheoTen",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"trangChu",
+						"getAnhTheoTen"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "getInfoAnhLuu",
+			"name": "GET xem ảnh đã được lưu chưa",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}/trangChiTiet/getInfoAnhLuu/4",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"trangChiTiet",
+						"getInfoAnhLuu",
+						"4"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "them anh",
+			"name": "POST thêm ảnh",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -157,30 +220,36 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "fileUpload",
+							"key": "img",
 							"type": "file",
 							"src": "/D:/NODE27/baitapORM3/public/img/download.jpg"
 						}
 					]
 				},
 				"url": {
-					"raw": "{{domain}}/trangChiTiet/postHinhAnh",
+					"raw": "{{domain}}/trangChiTiet/upload",
 					"host": [
 						"{{domain}}"
 					],
 					"path": [
 						"trangChiTiet",
-						"postHinhAnh"
+						"upload"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "xoaAnhTheoIdAnh",
+			"name": "DELETE  xóa ảnh theo Id ảnh",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "{{domain}}/trangChiTiet/xoaAnh/3",
 					"host": [
@@ -190,21 +259,44 @@
 						"trangChiTiet",
 						"xoaAnh",
 						"3"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "getUser",
+			"name": "GET toàn bộ User",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}/nguoidung/getUser",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"nguoidung",
+						"getUser"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "updateUser",
+			"name": "PUT Update User",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -238,26 +330,77 @@
 			"response": []
 		},
 		{
-			"name": "getUserId",
+			"name": "GET user theo id",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}/nguoiDung/getUser/1",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"nguoiDung",
+						"getUser",
+						"1"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "getAnhdaLuu",
+			"name": "GET ảnh đã lưu theo Id user",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}/nguoiDung/getPhotoIdUser/2",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"nguoiDung",
+						"getPhotoIdUser",
+						"2"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "GET danh sách ảnh tạo theo User Id",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{domain}}/nguoiDung/getUserIdPhoto/1",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"nguoiDung",
+						"getUserIdPhoto",
+						"1"
+					]
+				}
 			},
 			"response": []
 		}
