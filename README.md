@@ -1,4 +1,4 @@
-# ORM3capstone Quân và Trung 
+# capstone Express ORM Quân và Trung 
 + Quân 
  -Post trang đăng kí
  -Post trang đăng nhập 
