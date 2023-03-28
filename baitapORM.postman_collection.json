@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "81e07315-8b2a-4ad0-94ad-18d2b4cc2629",
+		"name": "baitapORM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25592951"
+	},
+	"item": [
+		{
+			"name": "getAnhAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/trangChu/getAnh",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"trangChu",
+						"getAnh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getInfoAnh",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/trangChiTiet/getInfoAnh",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"trangChiTiet",
+						"getInfoAnh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetInfoBinhLuan",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "trangDangKI",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"q112s45s3@gmail.com\",\r\n    \"mat_khau\":\"12345\",\r\n    \"ho_ten\":\"nguyen minh quan2\",\r\n    \"tuoi\": 15,\r\n    \"anh_dai_dien\":\"aaa2sdsda\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/dangki/signUp",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"dangki",
+						"signUp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "trangDangNhap",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"quan45@gmail.com\",\r\n    \"mat_khau\":\"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/dangnhap/login",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"dangnhap",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAnhTheoTen",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getInfoAnhLuu",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "them anh",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fileUpload",
+							"type": "file",
+							"src": "/D:/NODE27/baitapORM3/public/img/download.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}/trangChiTiet/postHinhAnh",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"trangChiTiet",
+						"postHinhAnh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "xoaAnhTheoIdAnh",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/trangChiTiet/xoaAnh/3",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"trangChiTiet",
+						"xoaAnh",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUser",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emai\":\"quan11@gmail.com\",\r\n    \"mat_khau\":\"1111\",\r\n    \"ho_ten\":\"quan111\",\r\n    \"tuoi\":\"18\",\r\n    \"anh\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/nguoiDung/updateUser/1",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"nguoiDung",
+						"updateUser",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserId",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getAnhdaLuu",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "http://localhost:8080/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50Ijp7Im5ndW9pX2R1bmdfaWQiOjgsImVtYWlsIjoicXVhbjQ1QGdtYWlsLmNvbSIsIm1hdF9raGF1IjoiIiwiaG9fdGVuIjoibmd1eWVuIG1pbmggcXVhbjIiLCJ0dW9pIjoxNSwiYW5oX2RhaV9kaWVuIjpudWxsfSwiaWF0IjoxNjc5OTI3MjY0LCJleHAiOjE5OTU1MDMyNjR9.kv5tA4pK9-FDfTmV_Fs9UAq5NgZq1cuzBX4r-jbKFxo\n",
+			"type": "string"
+		}
+	]
+}

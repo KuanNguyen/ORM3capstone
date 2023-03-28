@@ -4,32 +4,22 @@ const model = initModels(sequelize);
 const { createToken } = require('../utils/jwtoken');
 const { successCode, failCode, errorCode } = require('../config/response');
 
-const bcrypt = require('bcrypt');
+//trang đăng kí 
 const signUp = async (req, res) => {
     try {
-
-        // lấy data từ FE
-        let { email, mat_khau, ho_ten, tuoi, anh_dai_dien } = req.body;
-
-        // ES6 => object literal
-        let models = {
-            email,
-            mat_khau: bcrypt.hashSync(mat_khau, 10),
-            ho_ten,
-            tuoi,
-            anh_dai_dien
+        const { email, mat_khau, ho_ten, tuoi } = req.body
+        const nguoiDung = await model.nguoi_dung.findOne({
+           where: { email }
+        })
+        if (!nguoiDung) {
+           const data = await model.nguoi_dung.create({ email, mat_khau, ho_ten, tuoi })
+           successCode(res, data, 'Đăng kí thành công')
+        } else {
+           failCode(res, '', 'Email đã tồn tại')
         }
-
-        // thêm data vào CSDL
-        let data = await model.nguoi_dung.create(models);
-        if (data)
-            res.status(200).send("Thêm user thành công");
-
-    } catch (err) {
-        res.status(500).send(err);
-        console.log(err)
-
-    }
+     } catch (err) {
+        errCode(res, 'Lỗi Backend')
+     }
 }
 module.exports = {
     signUp
