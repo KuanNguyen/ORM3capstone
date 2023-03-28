@@ -32,29 +32,25 @@ const getInfoAnhId = async (req, res) => {
 //get thông tin bình luận theo id ảnh 
 const getInfoBinhLuan = async (req, res) => {
     try {
-        let { id } = req.params;
-        let dataOne = await model.hinh_anh.findOne({
-            where: {
-                hinh_id: id
-            }
-        }); 
-
-        if (dataOne){
-
-            let Cid = dataOne.hinh_id
-
-            let data = await model.binh_luan.findOne({
-
-                where: {
-                    hinh_id:Cid
-                }
-            });
-            successCode(res, {data, dataOne}, "Lấy ảnh thành công");}
-        else
-            failCode(res, id, "ảnh không tồn tại");
+      let { id } = req.params;
+      let checkImage = await model.hinh_anh.findOne({
+        where: {
+          hinh_id: id
+      }
+      });
+      if (checkImage) {
+        let data = await model.binh_luan.findAll({
+          where: {
+            hinh_id: id
+        }
+        });
+        successCode(res, data, "Lấy dữ liệu thành công");
+      } else {
+        failCode(res, "Không tìm thấy id ảnh");
+      }
     } catch (err) {
-        errorCode(res, "Lỗi Back end");
-        console.log(err)
+      console.log(err)
+      errorCode(res, "Lỗi Backend");
     }
 }
 

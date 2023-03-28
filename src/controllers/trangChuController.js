@@ -3,6 +3,7 @@ const initModels = require('../models/init-models');
 const model = initModels(sequelize);
 const { createToken } = require('../utils/jwtoken');
 const { successCode, failCode, errorCode } = require('../config/response');
+const fs = require('fs')
 
 
 //get ảnh 
@@ -15,22 +16,25 @@ const getAnh = async (req, res) => {
     }
 }
 
-//get ảnh theo tên 
+//get ảnh theo tên
+const Op = require('sequelize').Op 
 const getAnhTheoTen = async (req, res) => {
     try {
-        let { ten } = req.body;
-        let dataOne = await model.hinh_anh.findOne({
-            where: {
-                ten_hinh: ten
-            }
-        }); 
-        if (dataOne)
-            successCode(res, dataOne, "Lấy ảnh thành công");
-        else
-            failCode(res, id, "ảnh không tồn tại");
-    } catch (err) {        
-        errorCode(res, "Lỗi Back end");
-    }
+        const { tenHinh } = req.body
+        const data = await model.hinh_anh.findAll({
+           where: { ten_hinh: { [Op.like]: '%' + tenHinh + '%' } }
+        })
+        data.forEach(hinh => {
+           const checkDuongDan = fs.existsSync(process.cwd() + hinh.duong_dan)
+           if (checkDuongDan) {
+              hinh.duong_dan = `${config.DOMAIN}${hinh.duong_dan}`
+           }
+        })
+        successCode(res, data, 'Lấy hình ảnh thành công')
+     } catch (err) {
+        errorCode(res, 'Lỗi Backend')
+        console.log(err)
+     }
 }
 
 
